@@ -1,0 +1,68 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+
+    WeatherApp
+
+2. What real-world problem will your program address or help to solve?
+
+    This app will help to have in hand the weather information regarding
+    current conditions and the forecast of the day and the forecast for 
+    the next 3 days (This is what I can access from the Weather API with
+    a free subscription)
+
+3. What will you learn from developing this program?
+
+    Several topics are on the table. The one that is higlited is that I 
+    will learn about Kivy Frmework and how to integrate this technology
+    with python to make a program more user friendly. Other very important
+    will be how classes work in Python and how to work with them.
+
+4. What Python modules will your program use?
+
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+    - Kivy
+    - pytest
+    - requests
+    - datetime
+    - os
+
+5. List the names of functions you will need?
+
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+    - get_current_weather
+    - get_forecast
+    - update_image
+    - save_image
+    - get_current_data
+    - get_forecast_data
+    - update_gui
+
+6. List the names of the test functions you will write.
+
+    - test_get_current_weather
+    - test_get_forecast
+    - test_get_current_data
+    - test_get_forecast_data
+
