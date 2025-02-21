@@ -1,210 +1,191 @@
 #:kivy 1.0
 
-
 <Controller>:
-  #PY: GUI
+  #Connects Python to GUI ids
+  #from Python: to GUI id
+  #Current Data
   city: city_lb
   temperature: temperature_lb
   conditions: conditions_lb
   img_source: img_source_lb
   highest: highest_lb
   lowest: lowest_lb
-  
-  PageLayout
-    # Main Page
+  #Hours Data
+  hrs0: id_0hrs
+  hrs1: id_1hrs
+  hrs2: id_2hrs
+  hrs3: id_3hrs
+  hrs4: id_4hrs
+  hrs5: id_5hrs
+  hrs6: id_6hrs
+  hrs7: id_7hrs
+  hrs8: id_8hrs
+  hrs9: id_9hrs
+  hrs10: id_10hrs
+  hrs11: id_11hrs
+  hrs12: id_12hrs
+  hrs13: id_13hrs
+  hrs14: id_14hrs
+  hrs15: id_15hrs
+  hrs16: id_16hrs
+  hrs17: id_17hrs
+  hrs18: id_18hrs
+  hrs19: id_19hrs
+  hrs20: id_20hrs
+  hrs21: id_21hrs
+  hrs22: id_22hrs
+  hrs23: id_23hrs
+
+  BoxLayout:
+    orientation: 'vertical'
+    padding: 35
+
+    # creating Canvas
+    canvas:
+      Color:
+        rgba: 135 / 255., 206 / 255., 235 / 255., 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+
+    Label:
+      id: city_lb
+      text: 'Minsk'
+      font_size: 45
+    Label:
+      id: temperature_lb
+      text: '7°C'
+      font_size: 80
+    Label:
+      id: conditions_lb
+      text: 'Cloudy'
+      font_size: 25
+    Image:
+      id:img_source_lb
+      source: 'icons/weather_icon.png'
+
     BoxLayout:
-      orientation: 'vertical'
-      padding: 35
-
-      # creating Canvas
-      canvas:
-        Color:
-          rgba: 135 / 255., 206 / 255., 235 / 255., 1
-        Rectangle:
-          pos: self.pos
-          size: self.size
+      orientation: 'horizontal'
 
       Label:
-        id: city_lb
-        text: 'Minsk'
-        font_size: 45
+        id: highest_lb
+        text: 'H:9°'
+        font_size: 30
       Label:
-        id: temperature_lb
-        text: '7°C'
-        font_size: 80
-      Label:
-        id: conditions_lb
-        text: 'Cloudy'
-        font_size: 25
-      Image:
-        id:img_source_lb
-        source: 'icons/weather_icon.png'
-
+        id: lowest_lb
+        text: 'L:-4°'
+        font_size: 30
+    
+    ScrollView:
+      do_scroll_x: True  # Disable horizontal scrolling
+      do_scroll_y: False  # Enable vertical scrolling
+      size_hint: None, None
+      size: 700, 200
+    
       BoxLayout:
         orientation: 'horizontal'
+        size_hint_x: None
+        width: self.minimum_width
 
-        Label:
-          id: highest_lb
-          text: 'H:9°'
-          font_size: 30
-        Label:
-          id: lowest_lb
-          text: 'L:-4°'
-          font_size: 30
-      
-      ScrollView:
-        do_scroll_x: True  # Disable horizontal scrolling
-        do_scroll_y: False  # Enable vertical scrolling
-        size_hint: None, None
-        size: 700, 200
-      
-        BoxLayout:
-          orientation: 'horizontal'
-          size_hint_x: None
-          width: self.minimum_width
-
-          # Repeated forecast item
-          RepeaterBox:
-            id: 0hrs
-            time_text: '0am'
-            image_source: 'icons/weather_icon.png'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 1hrs
-            time_text: '1am'
-            image_source: 'icons/weather_icon.png'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 2hrs
-            time_text: '2am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 3hrs
-            time_text: '3am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 4hrs
-            time_text: '4am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 5hrs
-            time_text: '5am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 6hrs
-            time_text: '6am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 7hrs
-            time_text: '7am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 8hrs
-            time_text: '8am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 9hrs
-            time_text: '9am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 10hrs
-            time_text: '10am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 11hrs
-            time_text: '11am'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 12hrs
-            time_text: '12pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 13hrs
-            time_text: '1pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 14hrs
-            time_text: '2pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 15hrs
-            time_text: '3pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 16hrs
-            time_text: '4pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 17hrs
-            time_text: '5pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 18hrs
-            time_text: '6pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 19hrs
-            time_text: '7pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 20hrs
-            time_text: '8pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 21hrs
-            time_text: '9pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 22hrs
-            time_text: '10pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            id: 23hrs
-            time_text: '11pm'
-            temp_text: '-4°'
-
-    # Page 2
-    #BoxLayout:
-    #  orientation: 'vertical'
-    #  padding: 35
-#
-    #  canvas:
-    #    Color:
-    #      rgba: 109 / 255., 8 / 255., 57 / 255., 1
-    #    Rectangle:
-    #      pos: self.pos
-    #      size: self.size
-#
-    #  Label:
-    #    id: city_lb
-    #    text: 'Provo'
-    #    font_size: 30
-    #  Label:
-    #    #id: temperature_lb
-    #    text: '7°C'
-    #    font_size: 60
-    #  Label:
-    #    id: conditions_lb
-    #    text: 'Cloudy'
-    #    font_size: 25
-    #  Image:
-    #    source: 'weather_icon.png'
-#
-    #  BoxLayout:
-    #    orientation: 'horizontal'
-#
-    #    Label:
-    #      id: hiest_lb
-    #      text: 'H:9°'
-    #      font_size: 20
-    #    Label:
-    #      id: lowest_lb
-    #      text: 'L:-4°'
-    #      font_size: 20
-    
-    #Button:
-    #  text: root.info
-    #  on_press: root.do_action()
+        # Repeated forecast item
+        RepeaterBox:
+          id: id_0hrs
+          time_text: '0am'
+          image_source: 'icons/weather_icon.png'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_1hrs
+          time_text: '1am'
+          image_source: 'icons/weather_icon.png'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_2hrs
+          time_text: '2am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_3hrs
+          time_text: '3am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_4hrs
+          time_text: '4am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_5hrs
+          time_text: '5am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_6hrs
+          time_text: '6am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_7hrs
+          time_text: '7am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_8hrs
+          time_text: '8am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_9hrs
+          time_text: '9am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_10hrs
+          time_text: '10am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_11hrs
+          time_text: '11am'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_12hrs
+          time_text: '12pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_13hrs
+          time_text: '1pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_14hrs
+          time_text: '2pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_15hrs
+          time_text: '3pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_16hrs
+          time_text: '4pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_17hrs
+          time_text: '5pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_18hrs
+          time_text: '6pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_19hrs
+          time_text: '7pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_20hrs
+          time_text: '8pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_21hrs
+          time_text: '9pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_22hrs
+          time_text: '10pm'
+          temp_text: '-4°'
+        RepeaterBox:
+          id: id_23hrs
+          time_text: '11pm'
+          temp_text: '-4°'
 
 <RepeaterBox@BoxLayout>:
   orientation: 'vertical'
