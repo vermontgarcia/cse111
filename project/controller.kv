@@ -27,18 +27,18 @@
       Label:
         id: city_lb
         text: 'Minsk'
-        font_size: 30
+        font_size: 45
       Label:
         id: temperature_lb
         text: '7°C'
-        font_size: 60
+        font_size: 80
       Label:
         id: conditions_lb
         text: 'Cloudy'
         font_size: 25
       Image:
         id:img_source_lb
-        source: '116.png'
+        source: 'icons/weather_icon.png'
 
       BoxLayout:
         orientation: 'horizontal'
@@ -65,80 +65,102 @@
 
           # Repeated forecast item
           RepeaterBox:
-            time_text: 'Now'
-            image_source: "116.png"
+            id: 0hrs
+            time_text: '0am'
+            image_source: 'icons/weather_icon.png'
             temp_text: '-4°'
           RepeaterBox:
-            time_text: '2pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '3pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '4pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '5pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '6pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '7pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '8pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '9pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '10pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '11pm'
-            temp_text: '-4°'
-          RepeaterBox:
-            time_text: '12am'
-            temp_text: '-4°'
-          RepeaterBox:
+            id: 1hrs
             time_text: '1am'
+            image_source: 'icons/weather_icon.png'
             temp_text: '-4°'
           RepeaterBox:
+            id: 2hrs
             time_text: '2am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 3hrs
             time_text: '3am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 4hrs
             time_text: '4am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 5hrs
             time_text: '5am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 6hrs
             time_text: '6am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 7hrs
             time_text: '7am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 8hrs
             time_text: '8am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 9hrs
             time_text: '9am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 10hrs
             time_text: '10am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 11hrs
             time_text: '11am'
             temp_text: '-4°'
           RepeaterBox:
+            id: 12hrs
             time_text: '12pm'
             temp_text: '-4°'
           RepeaterBox:
+            id: 13hrs
             time_text: '1pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 14hrs
+            time_text: '2pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 15hrs
+            time_text: '3pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 16hrs
+            time_text: '4pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 17hrs
+            time_text: '5pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 18hrs
+            time_text: '6pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 19hrs
+            time_text: '7pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 20hrs
+            time_text: '8pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 21hrs
+            time_text: '9pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 22hrs
+            time_text: '10pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            id: 23hrs
+            time_text: '11pm'
             temp_text: '-4°'
 
     # Page 2

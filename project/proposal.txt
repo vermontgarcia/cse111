@@ -57,7 +57,8 @@ CSE 111 Proposal for a Student Chosen Program
     - save_image
     - get_current_data
     - get_forecast_data
-    - update_gui
+    - update_gui_main
+    - update_gui_forecast
 
 6. List the names of the test functions you will write.
 
