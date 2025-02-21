@@ -1,0 +1,202 @@
+#:kivy 1.0
+
+
+<Controller>:
+  #PY: GUI
+  city: city_lb
+  temperature: temperature_lb
+  conditions: conditions_lb
+  img_source: img_source_lb
+  highest: highest_lb
+  lowest: lowest_lb
+  
+  PageLayout
+    # Main Page
+    BoxLayout:
+      orientation: 'vertical'
+      padding: 35
+
+      # creating Canvas
+      canvas:
+        Color:
+          rgba: 135 / 255., 206 / 255., 235 / 255., 1
+        Rectangle:
+          pos: self.pos
+          size: self.size
+
+      Label:
+        id: city_lb
+        text: 'Minsk'
+        font_size: 30
+      Label:
+        id: temperature_lb
+        text: '7°C'
+        font_size: 60
+      Label:
+        id: conditions_lb
+        text: 'Cloudy'
+        font_size: 25
+      Image:
+        id:img_source_lb
+        source: '116.png'
+
+      BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+          id: highest_lb
+          text: 'H:9°'
+          font_size: 30
+        Label:
+          id: lowest_lb
+          text: 'L:-4°'
+          font_size: 30
+      
+      ScrollView:
+        do_scroll_x: True  # Disable horizontal scrolling
+        do_scroll_y: False  # Enable vertical scrolling
+        size_hint: None, None
+        size: 700, 200
+      
+        BoxLayout:
+          orientation: 'horizontal'
+          size_hint_x: None
+          width: self.minimum_width
+
+          # Repeated forecast item
+          RepeaterBox:
+            time_text: 'Now'
+            image_source: "116.png"
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '2pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '3pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '4pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '5pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '6pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '7pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '8pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '9pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '10pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '11pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '12am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '1am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '2am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '3am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '4am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '5am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '6am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '7am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '8am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '9am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '10am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '11am'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '12pm'
+            temp_text: '-4°'
+          RepeaterBox:
+            time_text: '1pm'
+            temp_text: '-4°'
+
+    # Page 2
+    #BoxLayout:
+    #  orientation: 'vertical'
+    #  padding: 35
+#
+    #  canvas:
+    #    Color:
+    #      rgba: 109 / 255., 8 / 255., 57 / 255., 1
+    #    Rectangle:
+    #      pos: self.pos
+    #      size: self.size
+#
+    #  Label:
+    #    id: city_lb
+    #    text: 'Provo'
+    #    font_size: 30
+    #  Label:
+    #    #id: temperature_lb
+    #    text: '7°C'
+    #    font_size: 60
+    #  Label:
+    #    id: conditions_lb
+    #    text: 'Cloudy'
+    #    font_size: 25
+    #  Image:
+    #    source: 'weather_icon.png'
+#
+    #  BoxLayout:
+    #    orientation: 'horizontal'
+#
+    #    Label:
+    #      id: hiest_lb
+    #      text: 'H:9°'
+    #      font_size: 20
+    #    Label:
+    #      id: lowest_lb
+    #      text: 'L:-4°'
+    #      font_size: 20
+    
+    #Button:
+    #  text: root.info
+    #  on_press: root.do_action()
+
+<RepeaterBox@BoxLayout>:
+  orientation: 'vertical'
+  size_hint_x: None
+  width: 80  # Width of each forecast box
+
+  Label:
+    text: root.time_text
+    font_size: 20
+
+  Image:
+    source: root.image_source
+
+  Label:
+    text: root.temp_text
+    font_size: 20
+
