@@ -29,12 +29,9 @@ doing any of the following:
 2025-02-20      1.5     Testing requests for API calls
 2025-02-20      0.5     Writing fetch weather function
 2025-02-20      0.5     Writing fetch forcast function
-
-
-
+2025-02-21      4.0     Finishing program
+2025-02-21      1.0     Documenting program
 =============Example====================
-
-
 
 2. In Canvas, submit this completed text file, your Python program, your
 Python test file, and any project data files such as .txt and .csv files and
