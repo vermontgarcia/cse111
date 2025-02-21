@@ -1,5 +1,4 @@
 import kivy
-kivy.require('1.0.5')
 
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -13,7 +12,6 @@ from kivy.utils import get_color_from_hex
 
 import requests
 import os
-# import geocoder
 
 # Classes
 class Controller(FloatLayout):
@@ -41,9 +39,14 @@ class Controller(FloatLayout):
       
     
   def on_load(self):
-    '''Call fetch_weather when the app starts'''
+    '''
+    Call fetch_weather when the app starts
+    '''
     self.get_weather()
 class RepeaterBox(BoxLayout):
+  '''
+    Class that creates a GUI Component to represent the Hour conditions 
+  '''
   time_text = StringProperty("Default Time")  # Default value time label
   image_source = StringProperty("icons/weather_icon.png") # Default value for image
   temp_text = StringProperty("0°")  # Default value for temp label
@@ -60,6 +63,12 @@ class ControllerApp(App):
 # Utility Functions
 
 def get_current_city():
+  '''
+    Fetch city from IP in request
+
+    Parameter: none
+    Return: Current City, Default to Provo UT if request fails
+  '''
   try:
     response = requests.get("http://ip-api.com/json/")
     data = response.json()
@@ -69,6 +78,13 @@ def get_current_city():
     return("provo") # If fails it defaults city to Provo UT
 
 def update_gui_main(self, data):
+  '''
+    Updates Current City GUI with weather information
+
+    Parameters:
+      self: Pyton Class instance
+      data: Current Conditions Dictionary
+  '''
   self.city.text = data['city']
   self.temperature.text = data['temperature']
   self.conditions.text = data['conditions']
@@ -76,21 +92,15 @@ def update_gui_main(self, data):
   self.highest.text = data['highest']
   self.lowest.text = data['lowest']
 
-def update_gui_forecast(self, data):
-  print(data)
-  # self.city.text = data['city']
-  # self.temperature.text = data['temperature']
-  # self.conditions.text = data['conditions']
-  # self.img_source.source = data['img_source']
-  # self.highest.text = data['highest']
-  # self.lowest.text = data['lowest']
-
 def update_gui_hours(self, data):
-  print(data)
+  '''
+    Updates GUI hours with weather conditions
+    
+    Parameters:
+      self: Pyton Class instance
+      data: Hours Dictionary
+  '''
 
-  keys_list = list(data.keys())  # Convert dictionary keys to a list
-  print(keys_list)
-  
   self.hrs0.image_source = data['hrs0'][0]
   self.hrs0.temp_text = data['hrs0'][1]
   self.hrs1.image_source = data['hrs1'][0]
@@ -140,14 +150,14 @@ def update_gui_hours(self, data):
   self.hrs23.image_source = data['hrs23'][0]
   self.hrs23.temp_text = data['hrs23'][1]
 
-  # self.city.text = data['city']
-  # self.temperature.text = data['temperature']
-  # self.conditions.text = data['conditions']
-  # self.img_source.source = data['img_source']
-  # self.highest.text = data['highest']
-  # self.lowest.text = data['lowest']
-
 def get_current_data(data):
+  '''
+    Process data and  object from API and return expected dictionary
+   
+    Parameter
+      data: API response Object.
+    Return: A Curren data Dictionary.
+  '''
   city = data['location']['name']
   temperature = f"{data['current']['temp_c']}°C"
   condition = data['current']['condition']['text']
@@ -172,6 +182,13 @@ def get_current_data(data):
   return data_dic
 
 def build_hours_data(data):
+  '''
+    Process data object from API and return expected dictionary
+   
+    Parameter:
+      data: API response Object.
+      Return: A Hours data Dictionary.
+  '''
   hours_dic = {}
   hours = data['forecast']['forecastday'][0]['hour']
   for index, hour in enumerate(hours):
@@ -185,7 +202,14 @@ def build_hours_data(data):
   return hours_dic
 
 def fetch_weather(city):
-  print(city)
+  '''
+    Fetch Weather from Weather API
+
+    Parameter:
+      city: Current city
+    Return:
+      data: Object from response API
+  '''
   URL = f"https://api.weatherapi.com/v1/forecast.json?q={city}&days=3&key=39a96f02b1314125884191955250602"
   response = requests.get(URL)
   if response.status_code == 200:
@@ -195,12 +219,29 @@ def fetch_weather(city):
     print("Error fetching data:", response.status_code)
 
 def dowload_image(icon_url, icon_filename):
+  '''
+    Fetch Icon Image from Weather API
+    This is a workaround to display icon image from local
+    It validates if icon exists, if not, then it download it 
+
+    Parameter:
+      icon_url: Icon URL
+      icon_filename: Icon Filename
+    Return: None (But saves Icon image to disk)
+  '''
   if not os.path.exists(f'icons/{icon_filename}'):
     img_data = requests.get(icon_url).content
     with open(f'icons/{icon_filename}', "wb") as handler:
       handler.write(img_data)
 
 def get_image_filename(icon_url):
+  '''
+    Create a filename from Icon URL to be used locally in the app
+    Parameter:
+      icon_url: Icon URL
+    Return: 
+      image_filename
+  '''
   # Split the URL get the relevant parts and build filename
   parts = icon_url.split("/")
   image_filename = f"{parts[-2]}-{parts[-1]}"
