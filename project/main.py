@@ -13,6 +13,7 @@ from kivy.utils import get_color_from_hex
 
 import requests
 import os
+# import geocoder
 
 # Classes
 class Controller(FloatLayout):
@@ -27,26 +28,18 @@ class Controller(FloatLayout):
   #   self.label_one.text = 'My label after button press'
   #   self.info = 'New info text'
   
-  def get_weather(self, city = "provo"):
+  def get_weather(self):
     '''
       Function to fetch Weather information from API
     '''
-    data = fetch_weather(city)
+    current_city = get_current_city()
 
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    # print(data)
-    current_data = get_current_data(data)
-    print(current_data)
-    hours_data = build_hours_data(data)
-    print(hours_data['0hrs'])
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    
-    if (city == "provo"):
-      update_gui_main(self, current_data)
-    
-    # self.info = 'New info text'
-  # fetch_weather(self)
+    data = fetch_weather(current_city)
 
+    update_gui_main(self, get_current_data(data))
+    update_gui_hours(self, build_hours_data(data))
+      
+    
   def on_load(self):
     '''Call fetch_weather when the app starts'''
     self.get_weather()
@@ -65,6 +58,16 @@ class ControllerApp(App):
     self.root.on_load()
 
 # Utility Functions
+
+def get_current_city():
+  try:
+    response = requests.get("http://ip-api.com/json/")
+    data = response.json()
+    current_city = data.get("city", "Unknown City")
+    return current_city
+  except:
+    return("provo") # If fails it defaults city to Provo UT
+
 def update_gui_main(self, data):
   self.city.text = data['city']
   self.temperature.text = data['temperature']
@@ -84,6 +87,59 @@ def update_gui_forecast(self, data):
 
 def update_gui_hours(self, data):
   print(data)
+
+  keys_list = list(data.keys())  # Convert dictionary keys to a list
+  print(keys_list)
+  
+  self.hrs0.image_source = data['hrs0'][0]
+  self.hrs0.temp_text = data['hrs0'][1]
+  self.hrs1.image_source = data['hrs1'][0]
+  self.hrs1.temp_text = data['hrs1'][1]
+  self.hrs2.image_source = data['hrs2'][0]
+  self.hrs2.temp_text = data['hrs2'][1]
+  self.hrs3.image_source = data['hrs3'][0]
+  self.hrs3.temp_text = data['hrs3'][1]
+  self.hrs4.image_source = data['hrs4'][0]
+  self.hrs4.temp_text = data['hrs4'][1]
+  self.hrs5.image_source = data['hrs5'][0]
+  self.hrs5.temp_text = data['hrs5'][1]
+  self.hrs6.image_source = data['hrs6'][0]
+  self.hrs6.temp_text = data['hrs6'][1]
+  self.hrs7.image_source = data['hrs7'][0]
+  self.hrs7.temp_text = data['hrs7'][1]
+  self.hrs8.image_source = data['hrs8'][0]
+  self.hrs8.temp_text = data['hrs8'][1]
+  self.hrs9.image_source = data['hrs9'][0]
+  self.hrs9.temp_text = data['hrs9'][1]
+  self.hrs10.image_source = data['hrs10'][0]
+  self.hrs10.temp_text = data['hrs10'][1]
+  self.hrs11.image_source = data['hrs11'][0]
+  self.hrs11.temp_text = data['hrs11'][1]
+  self.hrs12.image_source = data['hrs12'][0]
+  self.hrs12.temp_text = data['hrs12'][1]
+  self.hrs13.image_source = data['hrs13'][0]
+  self.hrs13.temp_text = data['hrs13'][1]
+  self.hrs14.image_source = data['hrs14'][0]
+  self.hrs14.temp_text = data['hrs14'][1]
+  self.hrs15.image_source = data['hrs15'][0]
+  self.hrs15.temp_text = data['hrs15'][1]
+  self.hrs16.image_source = data['hrs16'][0]
+  self.hrs16.temp_text = data['hrs16'][1]
+  self.hrs17.image_source = data['hrs17'][0]
+  self.hrs17.temp_text = data['hrs17'][1]
+  self.hrs18.image_source = data['hrs18'][0]
+  self.hrs18.temp_text = data['hrs18'][1]
+  self.hrs19.image_source = data['hrs19'][0]
+  self.hrs19.temp_text = data['hrs19'][1]
+  self.hrs20.image_source = data['hrs20'][0]
+  self.hrs20.temp_text = data['hrs20'][1]
+  self.hrs21.image_source = data['hrs21'][0]
+  self.hrs21.temp_text = data['hrs21'][1]
+  self.hrs22.image_source = data['hrs22'][0]
+  self.hrs22.temp_text = data['hrs22'][1]
+  self.hrs23.image_source = data['hrs23'][0]
+  self.hrs23.temp_text = data['hrs23'][1]
+
   # self.city.text = data['city']
   # self.temperature.text = data['temperature']
   # self.conditions.text = data['conditions']
@@ -125,7 +181,7 @@ def build_hours_data(data):
     # Download Icon
     dowload_image(icon_url, icon_filename)
     # Adding data to dictionary
-    hours_dic[f'{index}hrs'] = [f'icons/{icon_filename}', temp]
+    hours_dic[f'hrs{index}'] = [f'icons/{icon_filename}', f'{temp}']
   return hours_dic
 
 def fetch_weather(city):
